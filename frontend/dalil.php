@@ -3,7 +3,7 @@
  * dalil.php
  * Kumpulan ayat Al-Qur'an dan hadis (tab + filter tema).
  */
-$data = require __DIR__ . '/data/dalil.php';
+$data = require __DIR__ . '/../backend/data/dalil.php';
 
 $judul_halaman = "Al-Qur'an & Hadis";
 $menu_aktif    = 'dalil';

@@ -16,6 +16,8 @@
   var jumlahBenar = 0;
   var terkunci = false;
   var riwayat = [];
+  var nilaiServer = null;
+  var tokenCsrf = app.getAttribute('data-csrf') || '';
 
   function $(id) { return document.getElementById(id); }
   function buat(tag, kelas, teks) {
@@ -24,8 +26,6 @@
     if (teks !== undefined) el.textContent = teks;
     return el;
   }
-  function simpan(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* abaikan */ } }
-  function ambil(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
   var el = {
     nomor: $('kuisNomor'), bar: $('kuisBar'), barWadah: $('kuisBarWadah'), persen: $('kuisPersen'),
@@ -85,12 +85,19 @@
 
     fetch(urlCek, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-Token': tokenCsrf },
       body: JSON.stringify({ id: s.id, jawaban: i })
     })
       .then(function (r) {
-        if (!r.ok) throw new Error('Status ' + r.status);
-        return r.json();
+        if (r.status === 401) {
+          window.location.href = 'login.php?next=kuis.php';
+          throw new Error('Belum login');
+        }
+        return r.json().then(function (d) {
+          if (!r.ok) throw new Error((d && d.pesan) || ('Status ' + r.status));
+          return d;
+        });
       })
       .then(function (h) {
         if (!h || !h.ok) throw new Error('Tanggapan tidak valid');
@@ -106,6 +113,8 @@
             String.fromCharCode(65 + h.kunci) + '. ' + s.pilihan[h.kunci] + '. ' + h.penjelasan);
         }
 
+        if (h.selesai && typeof h.nilai === 'number') nilaiServer = h.nilai;
+
         riwayat.push({
           tanya: s.tanya,
           benar: !!h.benar,
@@ -115,28 +124,25 @@
         el.lanjut.disabled = false;
         el.lanjut.focus();
       })
-      .catch(function () {
+      .catch(function (err) {
         // Gagal menghubungi cek.php: buka kembali pilihan agar bisa dicoba lagi.
         terkunci = false;
         opsi.forEach(function (o) { o.disabled = false; });
         tampilUmpan('salah', 'Jawaban belum bisa diperiksa.',
-          ' Pastikan halaman dibuka lewat server PHP (misalnya http://localhost/pai-jejak-digital/kuis.php), bukan dengan membuka file langsung.');
+          ' ' + (err && err.message ? err.message : '') + ' Pastikan server PHP dan database PostgreSQL berjalan, lalu coba lagi.');
       });
   }
 
   function selesai() {
-    var nilai = Math.round((jumlahBenar / total) * 100);
+    // Nilai resmi dihitung dan disimpan oleh server.
+    var nilai = nilaiServer !== null ? nilaiServer : Math.round((jumlahBenar / total) * 100);
     var predikat;
     if (nilai >= 90) predikat = 'Luar biasa! Kamu penjaga amanah sejati.';
     else if (nilai >= 70) predikat = 'Bagus! Terus tingkatkan pemahamanmu.';
     else if (nilai >= 50) predikat = 'Cukup baik. Pelajari materi sekali lagi.';
     else predikat = 'Ayo belajar lagi, kamu pasti bisa!';
 
-    var terbaik = parseInt(ambil('amanah-kuis-terbaik') || '0', 10) || 0;
-    if (nilai > terbaik) {
-      terbaik = nilai;
-      simpan('amanah-kuis-terbaik', String(nilai));
-    }
+    var terbaik = Math.max(parseInt(window.KUIS_TERBAIK, 10) || 0, nilai);
 
     el.skorAngka.textContent = nilai;
     el.skorPredikat.textContent = predikat;

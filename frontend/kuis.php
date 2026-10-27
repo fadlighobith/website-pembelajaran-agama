@@ -4,7 +4,13 @@
  * Halaman kuis. Soal dikirim ke browser TANPA kunci jawaban;
  * jawaban diperiksa oleh cek.php melalui fetch (lihat assets/js/kuis.js).
  */
-$semua = require __DIR__ . '/data/soal.php';
+require_once __DIR__ . '/../backend/includes/auth.php';
+require_once __DIR__ . '/../backend/includes/db.php';
+
+// Kuis hanya untuk pengguna yang sudah masuk.
+wajib_login('Silakan masuk atau daftar terlebih dahulu untuk mengerjakan kuis.');
+
+$semua = require __DIR__ . '/../backend/data/soal.php';
 
 // Acak urutan soal setiap kali halaman dibuka, lalu buang kunci jawaban.
 shuffle($semua);
@@ -15,6 +21,18 @@ $soal_publik = array_map(function ($s) {
         'pilihan' => $s['pilihan'],
     ];
 }, $semua);
+
+// Mulai satu percobaan baru di database. Percobaan lama yang belum selesai dibuang.
+$pdo = db();
+$uid = (int) pengguna_saat_ini()['id'];
+$pdo->prepare('DELETE FROM percobaan_kuis WHERE pengguna_id = :u AND selesai IS NULL')->execute([':u' => $uid]);
+$st = $pdo->prepare('INSERT INTO percobaan_kuis (pengguna_id, jumlah_soal) VALUES (:u, :n) RETURNING id');
+$st->execute([':u' => $uid, ':n' => count($soal_publik)]);
+$_SESSION['kuis_percobaan'] = (int) $st->fetchColumn();
+
+$st = $pdo->prepare('SELECT COALESCE(MAX(nilai), 0) FROM percobaan_kuis WHERE pengguna_id = :u AND selesai IS NOT NULL');
+$st->execute([':u' => $uid]);
+$nilai_terbaik = (int) $st->fetchColumn();
 
 $judul_halaman = 'Kuis';
 $menu_aktif    = 'kuis';
@@ -33,7 +51,7 @@ include __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<section class="wadah tata-kuis" id="kuisApp" data-cek="cek.php">
+<section class="wadah tata-kuis" id="kuisApp" data-cek="../backend/api/cek.php" data-csrf="<?= e(csrf_token()) ?>">
     <div class="kartu panel-kuis" id="panelSoal">
         <noscript><p>Kuis ini memerlukan JavaScript. Aktifkan JavaScript di browser kamu.</p></noscript>
 
@@ -86,6 +104,7 @@ include __DIR__ . '/includes/header.php';
     </aside>
 </section>
 
+<script>window.KUIS_TERBAIK = <?= $nilai_terbaik ?>;</script>
 <script>window.SOAL_KUIS = <?= json_encode($soal_publik, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?>;</script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

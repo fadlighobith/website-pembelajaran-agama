@@ -4,7 +4,7 @@
  * Beranda (default) dan halaman Materi (?hal=materi&bab=1..6).
  */
 $hal    = (isset($_GET['hal']) && $_GET['hal'] === 'materi') ? 'materi' : 'beranda';
-$materi = require __DIR__ . '/data/materi.php';
+$materi = require __DIR__ . '/../backend/data/materi.php';
 
 if ($hal === 'materi') {
     $total = count($materi);
@@ -22,7 +22,7 @@ if ($hal === 'materi') {
     $menu_aktif    = 'beranda';
 
     // Satu hadis acak untuk ditampilkan di bagian kutipan.
-    $dalil  = require __DIR__ . '/data/dalil.php';
+    $dalil  = require __DIR__ . '/../backend/data/dalil.php';
     $acak   = $dalil['hadis'][array_rand($dalil['hadis'])];
 }
 

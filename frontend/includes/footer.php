@@ -8,7 +8,7 @@ $js_tambahan = isset($js_tambahan) ? $js_tambahan : [];
 
 // Indeks pencarian (judul + potongan teks) dibuat dari file data.
 $indeks = [];
-$data_materi = require __DIR__ . '/../data/materi.php';
+$data_materi = require __DIR__ . '/../../backend/data/materi.php';
 foreach ($data_materi as $bab) {
     $indeks[] = [
         'tipe'  => 'Materi',
@@ -17,7 +17,7 @@ foreach ($data_materi as $bab) {
         'url'   => 'index.php?hal=materi&bab=' . $bab['id'],
     ];
 }
-$data_dalil = require __DIR__ . '/../data/dalil.php';
+$data_dalil = require __DIR__ . '/../../backend/data/dalil.php';
 foreach ($data_dalil['quran'] as $i => $d) {
     $indeks[] = [
         'tipe'  => "Al-Qur'an",

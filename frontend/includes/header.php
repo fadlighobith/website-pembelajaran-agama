@@ -7,6 +7,8 @@
  *   $body_atribut   (string)  atribut tambahan untuk <body> (opsional)
  */
 
+require_once __DIR__ . '/../../backend/includes/auth.php';
+
 if (!function_exists('e')) {
     /** Escape output agar aman dari XSS. */
     function e($teks)
@@ -301,6 +303,7 @@ $menu = [
     'materi'  => ['Materi', 'index.php?hal=materi'],
     'dalil'   => ['Al-Qur\'an & Hadis', 'dalil.php'],
 ];
+$pengguna = pengguna_saat_ini();
 $menu_aktivitas = [
     ['Simulasi Kasus', 'simulasi.php', 'pesan'],
     ['THINK Sebelum Posting', 'think.php', 'lampu'],
@@ -359,6 +362,31 @@ $menu_aktivitas = [
         </nav>
 
         <div class="aksi-nav">
+            <?php if ($pengguna): ?>
+                <div class="dropdown dropdown-akun <?= $menu_aktif === 'akun' ? 'aktif' : '' ?>">
+                    <button type="button" class="dropdown-tombol tombol-akun" aria-haspopup="true" aria-expanded="false" aria-label="Menu akun">
+                        <?= ikon('pengguna', 18) ?> <span class="nama-akun"><?= e(strtok($pengguna['nama'], ' ')) ?></span>
+                        <?= ikon('bawah', 14) ?>
+                    </button>
+                    <div class="dropdown-isi">
+                        <div class="akun-info">
+                            <strong><?= e($pengguna['nama']) ?></strong>
+                            <small><?= $pengguna['role'] === 'admin' ? 'Admin / Guru' : 'Siswa' ?><?= $pengguna['kelas'] ? ' &middot; ' . e($pengguna['kelas']) : '' ?></small>
+                        </div>
+                        <?php if ($pengguna['role'] === 'admin'): ?>
+                            <a href="skor.php"><?= ikon('piala', 16) ?> Skor Siswa</a>
+                        <?php endif; ?>
+                        <a href="riwayat.php"><?= ikon('kuis', 16) ?> Riwayat Kuis Saya</a>
+                        <form method="post" action="../backend/api/logout.php">
+                            <?= csrf_input() ?>
+                            <button type="submit" class="dropdown-keluar"><?= ikon('kanan', 16) ?> Keluar</button>
+                        </form>
+                    </div>
+                </div>
+            <?php else: ?>
+                <a class="tombol tombol-garis tombol-kecil tombol-masuk" href="login.php">Masuk</a>
+                <a class="tombol tombol-utama tombol-kecil tombol-daftar" href="register.php">Daftar</a>
+            <?php endif; ?>
             <button type="button" class="tombol-ikon" id="tombolCari" aria-label="Cari materi atau dalil" title="Cari ( / )">
                 <?= ikon('cari', 18) ?>
             </button>
@@ -374,3 +402,4 @@ $menu_aktivitas = [
 </header>
 
 <main id="konten">
+<?= tampil_flash() ?>

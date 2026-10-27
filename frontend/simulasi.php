@@ -3,7 +3,7 @@
  * simulasi.php
  * Simulasi kasus "Apa yang akan kamu lakukan?". Logika ada di assets/js/main.js.
  */
-$skenario = require __DIR__ . '/data/simulasi.php';
+$skenario = require __DIR__ . '/../backend/data/simulasi.php';
 
 $judul_halaman = 'Simulasi Kasus';
 $menu_aktif    = 'aktivitas';

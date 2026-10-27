@@ -4,7 +4,7 @@
  * Latihan "THINK sebelum posting": 5 pertanyaan penyaring unggahan.
  * Logika penilaian ada di assets/js/main.js.
  */
-$think = require __DIR__ . '/data/think.php';
+$think = require __DIR__ . '/../backend/data/think.php';
 
 $judul_halaman = 'THINK Sebelum Posting';
 $menu_aktif    = 'aktivitas';
