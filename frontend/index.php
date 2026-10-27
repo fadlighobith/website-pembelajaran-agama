@@ -34,7 +34,6 @@ include __DIR__ . '/includes/header.php';
     <section class="pita hero">
         <div class="wadah hero-isi">
             <div class="muncul">
-                <span class="lencana">Selamat Datang di AmanahNet</span>
                 <h1>Jaga Jejak Digital, <span>Raih Keberkahan</span></h1>
                 <p>Kelola privasi digital dengan bijak, karena setiap data adalah amanah yang harus dijaga, di dunia dan di akhirat.</p>
                 <div class="hero-tombol">
@@ -120,7 +119,6 @@ include __DIR__ . '/includes/header.php';
     <section class="pita banner">
         <div class="wadah banner-isi">
             <div class="muncul">
-                <span class="lencana">Materi</span>
                 <h1>Kenali, Pahami, Jaga</h1>
                 <p>Pelajari materi yang disusun secara sederhana dan mudah dipahami, agar kamu bisa lebih bijak dalam menggunakan teknologi.</p>
             </div>
@@ -154,8 +152,6 @@ include __DIR__ . '/includes/header.php';
                 <?= ikon('buku', 26) ?>
                 <h2><?= (int) $bab['id'] ?>. <?= e($bab['judul']) ?></h2>
             </div>
-            <span class="lencana"><?= e($bab['label']) ?></span>
-
             <?php foreach ($bab['isi'] as $paragraf): ?>
                 <p><?= e($paragraf) ?></p>
             <?php endforeach; ?>

@@ -35,7 +35,6 @@ function baris_dalil($d, $prefiks, $no)
 <section class="pita banner">
     <div class="wadah banner-isi">
         <div class="muncul">
-            <span class="lencana">Al-Qur'an &amp; Hadis</span>
             <h1>Petunjuk untuk<br>Dunia Digital yang Lebih Baik</h1>
             <p>Ayat-ayat Al-Qur'an dan hadis yang mengajarkan kita tentang pentingnya menjaga privasi, amanah, dan etika dalam menggunakan teknologi.</p>
         </div>

@@ -292,7 +292,7 @@ SVG;
     }
 }
 
-$judul_halaman = isset($judul_halaman) ? $judul_halaman : 'AmanahNet';
+$judul_halaman = isset($judul_halaman) ? $judul_halaman : 'Privasiku';
 $menu_aktif    = isset($menu_aktif) ? $menu_aktif : '';
 $body_atribut  = isset($body_atribut) ? $body_atribut : '';
 
@@ -311,8 +311,8 @@ $menu_aktivitas = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AmanahNet: belajar menjaga privasi digital dengan landasan Al-Qur'an dan hadis.">
-    <title><?= e($judul_halaman) ?> | AmanahNet</title>
+    <meta name="description" content="Privasiku: belajar menjaga privasi digital dengan landasan Al-Qur'an dan hadis.">
+    <title><?= e($judul_halaman) ?> | Privasiku</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lora:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -332,9 +332,9 @@ $menu_aktivitas = [
 
 <header class="navbar" id="navbar">
     <div class="wadah navbar-isi">
-        <a class="merek" href="index.php" aria-label="AmanahNet, ke beranda">
+        <a class="merek" href="index.php" aria-label="Privasiku, ke beranda">
             <?= logo_svg() ?>
-            <span>AmanahNet</span>
+            <span>Privasiku</span>
         </a>
 
         <nav class="menu" id="menu" aria-label="Navigasi utama">

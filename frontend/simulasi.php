@@ -14,7 +14,6 @@ include __DIR__ . '/includes/header.php';
 <section class="pita banner">
     <div class="wadah banner-isi">
         <div class="muncul">
-            <span class="lencana">Aktivitas</span>
             <h1>Apa yang Akan<br>Kamu Lakukan?</h1>
             <p>Hadapi situasi nyata di dunia maya, pilih tindakanmu, lalu lihat dampak dan dalil yang berkaitan.</p>
         </div>

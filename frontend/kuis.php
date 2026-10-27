@@ -26,7 +26,6 @@ include __DIR__ . '/includes/header.php';
 <section class="pita banner">
     <div class="wadah banner-isi">
         <div class="muncul">
-            <span class="lencana">Kuis</span>
             <h1>Uji Pemahamanmu</h1>
             <p>Kerjakan kuis singkat untuk menguji seberapa jauh kamu memahami materi yang telah dipelajari.</p>
         </div>

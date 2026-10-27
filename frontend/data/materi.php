@@ -10,7 +10,6 @@ return [
         'id'     => 1,
         'menu'   => 'Pengenalan Privasi Digital',
         'judul'  => 'Pengertian Privasi Digital',
-        'label'  => 'Penjelasan',
         'isi'    => [
             "Privasi digital adalah hak setiap individu untuk mengontrol informasi pribadinya di dunia maya: siapa yang boleh melihat, mengumpulkan, menyimpan, dan menggunakan data tersebut. Setiap kali kita membuat akun, mengunggah foto, atau menekan tombol “Setuju” pada sebuah aplikasi, sebenarnya kita sedang menitipkan sebagian diri kita ke dunia digital.",
             "Dalam Islam, menjaga privasi termasuk bagian dari akhlak mulia. Islam mengajarkan adab meminta izin sebelum memasuki rumah orang lain, melarang mencari-cari kesalahan orang lain (tajassus), dan memerintahkan kita menjaga amanah. Prinsip yang sama berlaku di ruang digital, karena “rumah” kita kini juga berupa akun media sosial, galeri foto, dan percakapan pribadi.",
@@ -41,7 +40,6 @@ return [
         'id'     => 2,
         'menu'   => 'Data dan Informasi Pribadi',
         'judul'  => 'Data dan Informasi Pribadi',
-        'label'  => 'Penjelasan',
         'isi'    => [
             "Tidak semua data memiliki tingkat risiko yang sama. Memahami jenis data membantu kita menentukan mana yang boleh dibagikan secara terbuka, mana yang harus dibatasi, dan mana yang tidak boleh diberikan kepada siapa pun.",
             "Di Indonesia, pelindungan data pribadi diatur dalam Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP). Secara umum, pemilik data berhak mengetahui bagaimana datanya digunakan serta dapat meminta data tersebut diperbaiki atau dihapus. Sebaliknya, pihak yang mengelola data berkewajiban menjaganya.",
@@ -72,7 +70,6 @@ return [
         'id'     => 3,
         'menu'   => 'Risiko di Dunia Maya',
         'judul'  => 'Risiko dan Masalah di Dunia Maya',
-        'label'  => 'Masalah',
         'isi'    => [
             "Data yang bocor atau disalahgunakan dapat menimbulkan kerugian yang nyata, mulai dari kerugian uang, rusaknya nama baik, tekanan psikologis, hingga ancaman terhadap keselamatan diri. Masalah ini umumnya muncul karena kurang waspada, bukan karena teknologinya semata.",
             "Berikut ancaman yang paling sering dihadapi pelajar dan pengguna internet pada umumnya.",
@@ -106,7 +103,6 @@ return [
         'id'     => 4,
         'menu'   => 'Etika Digital dalam Islam',
         'judul'  => 'Etika Digital dalam Islam',
-        'label'  => 'Penjelasan',
         'isi'    => [
             "Islam tidak hanya mengatur ibadah, tetapi juga adab bermuamalah, termasuk saat bermedia sosial. Setiap kata yang kita tulis dan bagikan tercatat dan akan dimintai pertanggungjawaban. Karena itu, jari kita di papan ketik sama pentingnya dengan lisan kita ketika berbicara.",
             "Menjaga privasi diri sendiri dan orang lain dapat dikaitkan dengan tujuan syariat untuk melindungi kehormatan, harta, dan keselamatan manusia. Enam prinsip berikut dapat menjadi pedoman sehari-hari.",
@@ -134,7 +130,6 @@ return [
         'id'     => 5,
         'menu'   => 'Tips Menjaga Privasi',
         'judul'  => 'Tips Menjaga Privasi (Solusi)',
-        'label'  => 'Solusi',
         'isi'    => [
             "Menjaga privasi adalah ikhtiar atau usaha yang dapat kita lakukan setiap hari. Langkah-langkah berikut sederhana, tetapi sangat membantu mengurangi risiko yang telah dibahas sebelumnya.",
         ],
@@ -158,7 +153,6 @@ return [
         'id'     => 6,
         'menu'   => 'Kesimpulan',
         'judul'  => 'Kesimpulan',
-        'label'  => 'Kesimpulan',
         'isi'    => [
             "Privasi digital bukan hanya urusan teknis, tetapi juga urusan akhlak dan amanah. Data pribadi adalah titipan yang harus dijaga, baik data milik kita sendiri maupun data orang lain yang sampai kepada kita.",
             "Masalah seperti phishing, doxing, dan penyalahgunaan data dapat dicegah dengan kewaspadaan, kebiasaan digital yang sehat, dan adab bermedia sosial yang berlandaskan nilai-nilai Islam.",

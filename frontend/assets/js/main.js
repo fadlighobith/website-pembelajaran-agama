@@ -1,5 +1,5 @@
 /* ==========================================================
-   AmanahNet - main.js
+   Privasiku - main.js
    Fitur umum: tema gelap, menu, pencarian, tab dalil,
    progres materi, simulasi kasus, dan latihan THINK.
    ========================================================== */

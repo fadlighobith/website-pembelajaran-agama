@@ -1,5 +1,5 @@
 /* ==========================================================
-   AmanahNet - kuis.js
+   Privasiku - kuis.js
    Alur: tampilkan soal -> pengguna memilih -> jawaban dikirim ke
    cek.php (POST JSON) -> tampilkan benar/salah + penjelasan.
    ========================================================== */

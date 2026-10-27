@@ -45,7 +45,7 @@ $indeks[] = ['tipe' => 'Kuis', 'judul' => 'Kuis Privasi Digital', 'teks' => 'Uji
         <div class="kaki-merek">
             <?= logo_svg() ?>
             <div>
-                <strong>AmanahNet</strong>
+                <strong>Privasiku</strong>
                 <p>Media belajar Pendidikan Agama Islam: menjaga privasi digital sebagai amanah.</p>
             </div>
         </div>
@@ -57,7 +57,7 @@ $indeks[] = ['tipe' => 'Kuis', 'judul' => 'Kuis Privasi Digital', 'teks' => 'Uji
             <li><a href="kuis.php">Kuis</a></li>
         </ul>
     </div>
-    <p class="kaki-hak">&copy; <?= date('Y') ?> AmanahNet. Terjemahan ayat dan hadis ditulis ringkas; periksa kembali ke sumber asli.</p>
+    <p class="kaki-hak">&copy; <?= date('Y') ?> Privasiku. Terjemahan ayat dan hadis ditulis ringkas; periksa kembali ke sumber asli.</p>
 </footer>
 
 <!-- Jendela pencarian -->
